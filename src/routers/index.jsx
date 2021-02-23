@@ -9,7 +9,7 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {Provider} from 'mobx-react';
 import stores from '../stores/index';
-import App from '../pages/App.jsx'
+import App from '../pages/App.tsx'
 const configRoutes = [
     {
         path: '/',

@@ -6,7 +6,7 @@
  * @update: 2020-08-21 10:59
  */
 
-let SERVER_HOST = '127.0.0.1:6666'; //后端接口地址
+let SERVER_HOST = '127.0.0.1:3000'; //后端接口地址
 
 global.G_SERVER_HOST = SERVER_HOST;
 // 防抖
