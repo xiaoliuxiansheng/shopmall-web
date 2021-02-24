@@ -9,14 +9,50 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {Provider} from 'mobx-react';
 import stores from '../stores/index';
-import App from '../pages/App.tsx'
+import Register from '../pages/Register/index.tsx'
+import Home from '../pages/Home/index.tsx'
+import Login from '../pages/Login/index.tsx'
+import ModifyName from "../pages/Home/modify/modifyName";
+import ModifyPassword from "../pages/Home/modify/modifyPassword"
 const configRoutes = [
+    {
+        path: '/register',
+        exact: true,
+        main: Register,
+        meta: {
+            title: '注册'
+        }
+    },
+    {
+        path: '/home',
+        exact: true,
+        main: Home,
+        meta: {
+            title: '首页'
+        }
+    },
     {
         path: '/',
         exact: true,
-        main: App,
+        main: Login,
         meta: {
-            title: ''
+            title: '登录'
+        }
+    },
+    {
+        path: '/modifyName',
+        exact: true,
+        main: ModifyName,
+        meta: {
+            title: '修改名字'
+        }
+    },
+    {
+        path: '/modifyPassword',
+        exact: true,
+        main: ModifyPassword,
+        meta: {
+            title: '修改密码'
         }
     }
 ]

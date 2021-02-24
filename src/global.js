@@ -5,8 +5,8 @@
  * @description：global 基础配置信息
  * @update: 2020-08-21 10:59
  */
-
-let SERVER_HOST = '127.0.0.1:3000'; //后端接口地址
+import md5 from 'js-md5'
+let SERVER_HOST = 'http://172.16.103.25:3000'; //后端接口地址
 
 global.G_SERVER_HOST = SERVER_HOST;
 // 防抖
@@ -59,4 +59,8 @@ global.BROWSER = () => {
         isMobile
     }
 
+}
+// 密码加密
+global.encryptPassword = (pwd) => {
+    return md5.hex(pwd)
 }

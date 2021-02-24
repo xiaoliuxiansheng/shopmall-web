@@ -21,18 +21,30 @@ export function axiosRequest(api, method = 'GET', params, isHideLoading, serverH
     loadingFlag = true;
   }
   return new Promise((resolve, reject) => {
+    const token = localStorage.getItem('token')
     axios({
       method: method,
       url: serverHost + api,
-      headers: headers,
+      headers: {
+        authorization: "Bearer " + token,
+        ...headers,
+      },
       data: params
     })
     .then((res) => {
-
+      console.log(res)
       if (res.data.errcode && res.data.errcode < 0) {
-        Toast.info(JSON.stringify(res.data) || '请求错误');
+        Toast.fail(res.data.msg || '请求错误',2);
+        return
       }
-
+      if ( +res.data.errcode === 405) {
+        Toast.info(res.data.message || '用户认证信息已过期，请重新登录！')
+        localStorage.removeItem('token')
+        setTimeout(() => {
+          window.location.href = '/'
+        },1000)
+        return
+      }
       resolve(res.data);
 
       loadingFlag = false;
@@ -56,7 +68,23 @@ export function axiosRequest(api, method = 'GET', params, isHideLoading, serverH
 /**
  * test
  */
-// 获取角色权限信息
-export async function getUserMessage () {
-  return axiosRequest(`test`, 'GET', null, false, global.G_SERVER_HOST_GETUSERMSG,headers);
+// 注册
+export async function UserRegister (msg) {
+  return axiosRequest(`/api/register`, 'POST', msg, false);
+}
+// 登录
+export async function UserLogin (msg) {
+  return axiosRequest(`/api/userLogin`, 'POST', msg, false);
+}
+// 用户列表
+export async function UserList (page,size) {
+  return axiosRequest(`/api/user/list?page=${page}&size=${size}`, 'GET', '', false);
+}
+// 修改名称
+export async function modifyUserName (msg) {
+  return axiosRequest(`/api/user/name`, 'PUT', msg, false);
+}
+// 修改密码
+export async function modifyUserPwd (msg) {
+  return axiosRequest(`/api/user/password`, 'PUT', msg, false);
 }

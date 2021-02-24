@@ -1,0 +1,33 @@
+@loginContent: login-content;
+.@{loginContent} {
+  &-form {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    &-register {
+      display: flex;
+      line-height: 25px;
+      font-size: 12px;
+      padding: 0 14px;
+      color: #2F79F5;
+      span{
+        flex: 1;
+        &:nth-of-type(2) {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+  &-bottom {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  &-btn {
+    width: 40%;
+    height: 35px;
+    line-height: 35px;
+  }
+}

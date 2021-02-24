@@ -1,0 +1,73 @@
+@home: home;
+.@{home} {
+  //display: flex;
+  //flex:1;
+  height: 100%;
+  overflow: hidden;
+  &-title {
+    display: flex;
+    height: 45px;
+    background: #fff;
+    padding: 0 15px;
+    div {
+      flex: 1;
+      &:nth-of-type(2) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &:nth-of-type(1) {
+        display: flex;
+        align-items: center;
+      }
+      &:nth-of-type(3) {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+  &-list {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    &-item {
+      line-height: 30px;
+      display: flex;
+      flex-direction: row;
+      &-name {
+        &:nth-of-type(2) {
+          padding-left: 10px;
+        }
+        span {
+          color: #999;
+          font-size: 16px;
+          &:nth-of-type(2) {
+            color: #333;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+.my-drawer {
+  //position: relative;
+  top: 45px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar {
+  background-color: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar .am-list {
+  width: 300px;
+  padding: 0;
+}
+.am-drawer.am-drawer-left .am-drawer-draghandle, .am-drawer.am-drawer-right .am-drawer-draghandle{
+  width: 0px;
+}
