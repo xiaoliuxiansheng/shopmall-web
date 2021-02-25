@@ -15,13 +15,23 @@ const HomeDrawer = (props: any) => {
     },{
         name:'修改密码',
         path:'/modifyPassword'
+    },{
+        name: '退出登录',
+        path: ''
     }]
     return (
         <div className="home-drawer">
             {
                 tabAry.map((tab, tabIndex) => {
                     return (
-                        <div className="home-drawer-item" key={tabIndex} onClick={() => props.history.push(tab.path)}>
+                        <div className="home-drawer-item" key={tabIndex} onClick={() => {
+                            if (tabIndex < 2) {
+                                props.history.push(tab.path)
+                            } else {
+                                localStorage.clear()
+                                window.location.href = '/'
+                            }
+                        }}>
                             {tab.name}
                         </div>
                     )

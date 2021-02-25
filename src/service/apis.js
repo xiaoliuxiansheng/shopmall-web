@@ -32,7 +32,6 @@ export function axiosRequest(api, method = 'GET', params, isHideLoading, serverH
       data: params
     })
     .then((res) => {
-      console.log(res)
       if (res.data.errcode && res.data.errcode < 0) {
         Toast.fail(res.data.msg || '请求错误',2);
         return

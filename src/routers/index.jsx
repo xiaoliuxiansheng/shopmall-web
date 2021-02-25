@@ -14,6 +14,7 @@ import Home from '../pages/Home/index.tsx'
 import Login from '../pages/Login/index.tsx'
 import ModifyName from "../pages/Home/modify/modifyName";
 import ModifyPassword from "../pages/Home/modify/modifyPassword"
+import ChatRoom from '../pages/Chat/index.tsx'
 const configRoutes = [
     {
         path: '/register',
@@ -53,6 +54,14 @@ const configRoutes = [
         main: ModifyPassword,
         meta: {
             title: '修改密码'
+        }
+    },
+    {
+        path: '/chat',
+        exact: true,
+        main: ChatRoom,
+        meta: {
+            title: '聊天室'
         }
     }
 ]

@@ -17,7 +17,12 @@ const ModifyPassword = (props: any) => {
         setError(!hasError)
     }
     const handleModifyPwd = () => {
-        modifyUserPwd({oldpwd: password,newpwd:newPassword,id:JSON.parse(localStorage.getItem('userInfo') as string).id}).then((res) => {
+        modifyUserPwd({
+            // @ts-ignore
+            oldpwd: global.encryptPassword(password as string),
+            // @ts-ignore
+            newpwd: global.encryptPassword(newPassword as string),
+            id:JSON.parse(localStorage.getItem('userInfo') as string).id}).then((res) => {
             if (+res.errcode === 0) {
                 Toast.success('修改成功', 1 , () => {
                     localStorage.clear()

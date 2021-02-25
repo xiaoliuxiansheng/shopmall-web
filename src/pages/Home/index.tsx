@@ -7,6 +7,7 @@
  */
 import React, { useEffect, useState, useRef } from "react";
 import { Drawer, List, NavBar, Icon } from 'antd-mobile';
+import { createWebSocket, websocketSendMsg} from '../../service/websocket'
 import { UserList } from '../../service/apis'
 import './app.less'
 import HomeDrawer from './homeDrawer/index'
@@ -14,9 +15,12 @@ const Index = (props: any) => {
     const [page, setPage] = useState(1)
     const [users, setUsers] = useState<any>([])
     const [open, setOpen] = useState<any>(false)
-    useEffect(() => {
-        handleGetUser()
-    },[])
+    // useEffect(() => {
+    //     handleGetUser()
+    //     const token = localStorage.getItem('token');
+    //     let baseUrl = ``;
+    //     createWebSocket(baseUrl,'message')
+    // },[])
     const handleGetUser = () => {
         UserList(page,10).then(res => {
             if (+res.errcode === 0) {
@@ -48,9 +52,8 @@ const Index = (props: any) => {
                 </div>
                 <div>用户列表</div>
                 <div>
-                    <i className="iconfont icon-tuichu" onClick={() => {
-                        localStorage.clear()
-                        window.location.href = '/'
+                    <i className="iconfont icon-liaotian" style={{color:'#1296db'}} onClick={ () => {
+                        props.history.push('/chat')
                     }}/>
                 </div>
             </div>

@@ -20,9 +20,6 @@ const Index = (props: any) => {
         setName(msg)
     }
     const onChangePhone = (msg: any) => {
-        // @ts-ignore
-        let xx = global.encryptPassword(phone as string)
-        console.log(xx)
         setPhone(msg)
     }
     const onChangePassword = (msg: any) => {
@@ -31,7 +28,8 @@ const Index = (props: any) => {
     const handleRegister = async () => {
         let res = await UserLogin({
             phone,
-            password
+            // @ts-ignore
+            password : global.encryptPassword(password as string)
         })
         if (+res.errcode === 0 ) {
             localStorage.setItem('token', res.token)

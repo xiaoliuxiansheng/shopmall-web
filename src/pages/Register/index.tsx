@@ -28,11 +28,12 @@ const Index = (props: any) => {
     const handleRegister = async () => {
         let res = await UserRegister({
             name,
-            phone,
-            password
+            phone: phone.replace(/\s*/g,""),
+            // @ts-ignore
+            password: global.encryptPassword( password as string)
         })
         if (+res.errcode === 0) {
-            props.history.push('/login')
+            props.history.push('/')
         }
         console.log(res)
     }

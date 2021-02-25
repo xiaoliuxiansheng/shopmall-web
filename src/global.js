@@ -7,8 +7,10 @@
  */
 import md5 from 'js-md5'
 let SERVER_HOST = 'http://172.16.103.25:3000'; //后端接口地址
+let WS_HOST = 'ws://172.16.103.25:5000/'
 
 global.G_SERVER_HOST = SERVER_HOST;
+global.G_WS_HOST = WS_HOST;
 // 防抖
 global.G_DEBOUNCE = (fn, wait) => {
     var timeout = null;
